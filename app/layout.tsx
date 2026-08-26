@@ -34,8 +34,8 @@ export default function RootLayout({
           <Link href="/">Home</Link>
           <Link href="/accordion">Accordion</Link>
           <Link href="/dropdown/">Dropdown</Link>
-          <Link href="/blog">Text Input</Link>
-          <Link href="/blog">Radio</Link>
+          <Link href="/text-input">Text Input</Link>
+          <Link href="/radio">Radio</Link>
           {/* No prefetching */}
           <a href="/contact">Contact</a>
           </nav>
