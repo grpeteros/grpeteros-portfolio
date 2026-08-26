@@ -14,6 +14,8 @@ export default function BasicTextFields() {
         noValidate
         autoComplete="off"
         className="bg-white p-5 border border-radius-xs"
+
+         style={{ borderRadius: '5px' }}
       >
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
         <TextField id="filled-basic" label="Filled" variant="filled" />
