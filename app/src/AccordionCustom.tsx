@@ -16,7 +16,7 @@ export default function AccordionCustom() {
         aria-controls={`${id}-panel1-content`}
         id={`${id}-panel1-header`}
       >
-        <Typography component="span">ACCORDION</Typography>
+        <Typography component="span">Accordion</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
