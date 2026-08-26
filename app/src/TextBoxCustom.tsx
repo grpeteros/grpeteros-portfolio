@@ -6,7 +6,7 @@ export default function BasicTextFields() {
   return (
     <div>
       <Typography component="h2">
-        Text Input test
+        Text Input
       </Typography>
       <Box
         component="form"
