@@ -34,7 +34,6 @@ export default function RootLayout({
           <Link href="/">Home</Link>
           <Link href="/accordion">Accordion</Link>
           <Link href="/dropdown/">Dropdown</Link>
-          {/* <NavLink /> */}
           <div className="flex flex-row" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
             <Link className="flex flex-row" onClick={() => setIsOpen(!isOpen)} href="/text-input">Text Input
             <svg
@@ -62,7 +61,6 @@ export default function RootLayout({
                 >
                   Filled
                 </Link>
-                {/* <hr className="my-1 border-slate-200" /> */}
                 <Link
                   href="/text-input/standard"
                   onClick={() => setIsOpen(false)}
@@ -72,9 +70,7 @@ export default function RootLayout({
                 </Link>
               </nav>
             )}
-
           </div>
-          <Link href="/radio">Radio</Link>
           {/* No prefetching */}
           <a href="/contact">Contact</a>
         </nav>
