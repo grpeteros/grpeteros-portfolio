@@ -5,9 +5,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
-import AccordionCustom from "./src/AccordionCustom";
-import NavLink from "./src/NavLink";
-import { Typography } from "@mui/material";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
