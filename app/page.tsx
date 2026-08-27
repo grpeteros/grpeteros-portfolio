@@ -4,6 +4,7 @@ import AccordionCustom from "./src/AccordionCustom";
 import DropdownCustom from "./src/DropdownCustom";
 import TextField from '@mui/material/TextField';
 import TextBoxCustom from "./src/TextBoxCustom";
+import RadioCustom from "./src/RadioCustom";
 
 
 export default function Home() {
@@ -40,7 +41,7 @@ export default function Home() {
             center.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row mb-8">
           <a
             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -70,12 +71,17 @@ export default function Home() {
         </div>
 
         <div className="mb-8">
-          <DropdownCustom />  
           <div className="text-white">Dropdown</div>
+          <DropdownCustom />
         </div>
 
-        <div>
+        <div className="mb-8">
           <TextBoxCustom/>
+        </div>
+        <div className="text-white">Radio</div>
+        <div className="bg-white text-black rounded-md p-4 mb-8">
+          
+          <RadioCustom/>
         </div>
       </main>
     </div>
