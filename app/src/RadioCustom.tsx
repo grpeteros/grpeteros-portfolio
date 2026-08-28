@@ -5,22 +5,23 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-export default function BasicTextFields() {
+export default function BasicTextFields(props: any) {
   const id = React.useId();
   return (
     <div>
       <FormControl>
-      <FormLabel id={`${id}-label`}>Gender</FormLabel>
-      <RadioGroup
-        aria-labelledby={`${id}-label`}
-        defaultValue="female"
-        name="radio-buttons-group"
-      >
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
-        <FormControlLabel value="other" control={<Radio />} label="Other" />
-      </RadioGroup>
-    </FormControl>
+        <FormLabel id={`${id}-label`}>Gender</FormLabel>
+        <RadioGroup
+          aria-labelledby={`${id}-label`}
+          defaultValue="female"
+          name="radio-buttons-group"
+          onChange={(event) => props.setGenderValue(event.target.value)}
+        >
+          <FormControlLabel value="female" control={<Radio />} label="Female" />
+          <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel value="other" control={<Radio />} label="Other" />
+        </RadioGroup>
+      </FormControl>
     </div>
 
 

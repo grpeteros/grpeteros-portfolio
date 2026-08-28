@@ -9,7 +9,7 @@ export default function TextBoxPage() {
     >
       {/* <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"> */}
           <TextField className="bg-white" id="outlined-basic" label="Outlined" variant="outlined" style={{ padding: '10px', borderRadius: '5px' }} />
-        <div className="text-white">THIS IS TEXT INPUT</div>
+        <div className="text-white">This is the Outlined Text Input page</div>
       {/* </main> */}
     </div>
   );

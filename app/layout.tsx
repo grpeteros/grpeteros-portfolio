@@ -46,7 +46,9 @@ export default function RootLayout({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
             </Link>
-            {isOpen && (
+            {
+            isOpen && 
+            (
               <nav className="mt-2 w-48 bg-white text-slate-800 rounded-md shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                 <Link
                   href="/text-input/outlined"
@@ -70,7 +72,8 @@ export default function RootLayout({
                   Standard
                 </Link>
               </nav>
-            )}
+            )
+            }
           </div>
           {/* No prefetching */}
           <a href="/contact">Contact</a>
