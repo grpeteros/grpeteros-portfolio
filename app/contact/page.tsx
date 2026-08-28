@@ -32,6 +32,9 @@ export default function DropdownPage() {
           <Link href="tel:+639420055921" className="mt-5 hover:underline flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]">
             Phone
           </Link>
+          <Link href="/projects" className="mt-5 hover:underline flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]">
+            Projects
+          </Link>
         </div>
       </main>
     </div>
