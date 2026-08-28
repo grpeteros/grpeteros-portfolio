@@ -5,20 +5,37 @@ import DropdownCustom from "./src/DropdownCustom";
 import TextField from '@mui/material/TextField';
 import TextBoxCustom from "./src/TextBoxCustom";
 import RadioCustom from "./src/RadioCustom";
+import { useState } from "react";
 
 
 export default function Home() {
+  const [outlined, setOutlined] = useState<string>('No data yet');
+  const [filled, setFilled] = useState<string>('No data yet');
+  const [standard, setStandard] = useState<string>('No data yet');
+
+  const setOutlinedValue = (data: string) => {
+    setOutlined(data);
+  }
+
+  const setFilledValue = (data: string) => {
+    setFilled(data);
+  }
+
+  const setStandardValue = (data: string) => {
+    setStandard(data);
+  }
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
+        {/* <Image
           className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={100}
           height={20}
           priority
-        />
+        /> */}
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             This is root page
@@ -76,12 +93,24 @@ export default function Home() {
         </div>
 
         <div className="mb-8">
-          <TextBoxCustom/>
+          <TextBoxCustom
+            setOutlinedValue={setOutlinedValue}
+            setFilledValue={setFilledValue}
+            setStandardValue={setStandardValue}
+          />
         </div>
         <div className="text-white">Radio</div>
         <div className="bg-white text-black rounded-md p-4 mb-8">
-          
-          <RadioCustom/>
+          <RadioCustom />
+        </div>
+
+        <div
+          className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+          onClick={() => {
+            alert(`${outlined} ${filled} ${standard}`);
+          }}
+        >
+          Ok
         </div>
       </main>
     </div>

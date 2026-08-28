@@ -2,7 +2,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
-export default function BasicTextFields() {
+export default function BasicTextFields(props: any) {
+
+
+
   return (
     <div>
       <Typography component="h2">
@@ -17,9 +20,9 @@ export default function BasicTextFields() {
 
          style={{ borderRadius: '5px' }}
       >
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="standard-basic" label="Standard" variant="standard" />
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" onChange={(event) => props.setOutlinedValue(event.target.value)} />
+        <TextField id="filled-basic" label="Filled" variant="filled" onChange={(event) => props.setFilledValue(event.target.value)} />
+        <TextField id="standard-basic" label="Standard" variant="standard" onChange={(event) => props.setStandardValue(event.target.value)} />
       </Box>
     </div>
 

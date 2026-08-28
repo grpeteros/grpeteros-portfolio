@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
@@ -76,7 +77,18 @@ export default function RootLayout({
         </nav>
         {children}
 
-
+        <div>
+          <footer className="flex flex-row gap-4 p-4 text-sm text-zinc-950 dark:text-zinc-50">
+            <p>Powered by </p><Image
+                      className="dark:invert"
+                      src="/next.svg"
+                      alt="Next.js logo"
+                      width={100}
+                      height={20}
+                      priority
+                    />
+            </footer>
+        </div>
       </body>
     </html>
   );
