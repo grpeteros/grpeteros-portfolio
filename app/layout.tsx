@@ -49,7 +49,8 @@ export default function RootLayout({
             {
             isOpen && 
             (
-              <nav className="mt-2 w-48 bg-white text-slate-800 rounded-md shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+              <nav className="nav-links mt-2 w-48 bg-white text-slate-800 rounded-md shadow-lg py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150" 
+               >
                 <Link
                   href="/text-input/outlined"
                   onClick={() => setIsOpen(false)}
