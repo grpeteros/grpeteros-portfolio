@@ -26,17 +26,19 @@ body {
 }
 
 
+.nav-links {
+    position: fixed;
+  }
+
 @media screen and (max-width: 1279px) {
   .nav-links {
-    position: fixed;
-    margin-left: 85px;
+    margin-top: 20px;
   }
 }
 
 
 @media screen and (min-width: 1280px) {
   .nav-links {
-    position: fixed;
     margin-left: 100px;
   }
 }
