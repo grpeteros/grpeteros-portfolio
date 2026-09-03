@@ -11,7 +11,7 @@ const [data, setData] = useState<any>(null)
 
 
     useEffect(() => {
-        fetch('https://grpeteros-portfolio-be.onrender.com:3001/dishwashing-liquid-lemon')
+        fetch('https://grpeteros-portfolio-be.onrender.com/dishwashing-liquid-lemon')
           .then((res) => res.json())
           .then((data) => {
             let sortedData = data;
