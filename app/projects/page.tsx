@@ -12,7 +12,8 @@ export default function ProjectsPage() {
     fetch('https://grpeteros-portfolio-be.onrender.com/projects')
       .then((res) => res.json())
       .then((data) => {
-        setData(data)
+        let sortedData = data.projects.sort((a: any, b: any) => b.id - a.id);
+        setData(sortedData)
         setLoading(false)
       })
   }, [])
