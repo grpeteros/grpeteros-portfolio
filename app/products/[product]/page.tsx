@@ -15,7 +15,7 @@ export default function Page({params,}: {params: Promise<{product: string}>}) {
 
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}${(process.env.NEXT_PUBLIC_LOCAL_PORT ? `:${process.env.NEXT_PUBLIC_LOCAL_PORT}` : '')}/products/${product}`)
+    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}${(process.env.NEXT_PUBLIC_LOCAL_PORT ? `:${process.env.NEXT_PUBLIC_LOCAL_PORT}/` : '/')}products/${product}`)
       .then((res) => res.json())
       .then((data) => {
         let sortedData = {...data.product[0]};
