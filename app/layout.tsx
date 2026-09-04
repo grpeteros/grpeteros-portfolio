@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,7 @@ export default function RootLayout({
         {/* Prefetched when the link is hovered or enters the viewport */}
         <nav className="flex gap-4 p-4 ">
           <Link href="/">Home</Link>
-          <Link href="/accordion">Accordion</Link>
+          {/* <Link href="/accordion">Accordion</Link>
           <Link href="/dropdown/">Dropdown</Link>
           <div className="flex flex-row" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
             <Link className="flex flex-row" onClick={() => setIsOpen(!isOpen)} href="/text-input">Text Input
@@ -75,23 +76,29 @@ export default function RootLayout({
               </nav>
             )
             }
-          </div>
+          </div> */}
           {/* No prefetching */}
           <a href="/contact">Contact</a>
+
+          <Link href="/products">Products</Link>
+          <Link href="/projects">Projects</Link>
+          <ShoppingCartIcon className="cursor-pointer" onClick={() => { window.location.href = '/cart' }} style={{marginLeft:'auto'}} />
+
+
         </nav>
         {children}
 
         <div>
           <footer className="flex flex-row gap-4 p-4 text-sm text-zinc-950 dark:text-zinc-50">
             <p>Powered by </p><Image
-                      className="dark:invert"
-                      src="/next.svg"
-                      alt="Next.js logo"
-                      width={100}
-                      height={20}
-                      priority
-                    />
-            </footer>
+              className="dark:invert"
+              src="/next.svg"
+              alt="Next.js logo"
+              width={100}
+              height={20}
+              priority
+            />
+          </footer>
         </div>
       </body>
     </html>
