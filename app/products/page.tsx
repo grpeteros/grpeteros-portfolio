@@ -27,7 +27,7 @@ export default function BasicTable() {
   const [data, setData] = useState<any>(null)
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}${(process.env.NEXT_PUBLIC_LOCAL_PORT ? `:${process.env.NEXT_PUBLIC_LOCAL_PORT}` : '')}products/`)
+    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}${(process.env.NEXT_PUBLIC_LOCAL_PORT ? `:${process.env.NEXT_PUBLIC_LOCAL_PORT}` : '')}/products/`)
       .then((res) => res.json())
       .then((data) => {
         // let sortedData = { };
