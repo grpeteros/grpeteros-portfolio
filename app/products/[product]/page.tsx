@@ -29,16 +29,17 @@ export default function Page({params,}: {params: Promise<{product: string}>}) {
     alert('Added to cart')
   }
 
-  return <div>
+  return <div className="flex flex-col items-center justify-center gap-4">
       {/* <Image src="/WebPOS.png" alt="sample image" width={200} height={200} className="rounded-full mb-4"
                 /> */}
-    The price for this {data?.product_name}: {data?.product_price}
+    Fruit {data?.product_name}: PHP {data?.product_price} / kg
 
-    <TextBoxCustom filled={true} setFilledValue={(value: any) => setData({...data, product_quantity: value})} label="Quantity"
-    // setFilledValue={(value: any) => console.log('Filled value:', value)} 
+    <TextBoxCustom filled={true} setFilledValue={(value: any) => setData({...data, product_quantity: value})} label="Weight (kg)"
     setStandardValue={(value: any) => console.log('Standard value:', value)} />
     
-    <Link href='' onClick={() => {addToCart(data)}} className="hover:underline flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]">
+    <Link href='' onClick={() => {addToCart(data)}} className="hover:underline flex py-5 h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
+      style={{ marginTop: '5px' }}
+    >
       Add to cart
     </Link>
   

@@ -27,7 +27,9 @@ export default function CartPage() {
 
   const resetCart = () => {
     window.localStorage.setItem('cart', JSON.stringify([]));
-    location.reload();
+    setTimeout(() => {
+        location.reload();
+    }, 4000);
     showToast.info('Cart reset', {
       duration: 4000,
       position: "top-right",
