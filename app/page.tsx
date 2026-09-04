@@ -58,6 +58,9 @@ export default function Home() {
 
         <div className="mb-8">
           <TextBoxCustom
+            outlined={true}
+            filled={true}
+            standard={true}
             setOutlinedValue={setOutlinedValue}
             setFilledValue={setFilledValue}
             setStandardValue={setStandardValue}
