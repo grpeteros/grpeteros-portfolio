@@ -9,20 +9,26 @@ export default function BasicTextFields(props: any) {
   return (
     <div>
       <Typography component="h2">
-        Text Input
+        {props.label}
       </Typography>
       <Box
         component="form"
         sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
         noValidate
         autoComplete="off"
-        className="bg-white p-5 border border-radius-xs"
+        className="bg-white border border-radius-xs"
 
          style={{ borderRadius: '5px' }}
       >
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" onChange={(event) => props.setOutlinedValue(event.target.value)} />
-        <TextField id="filled-basic" label="Filled" variant="filled" onChange={(event) => props.setFilledValue(event.target.value)} />
-        <TextField id="standard-basic" label="Standard" variant="standard" onChange={(event) => props.setStandardValue(event.target.value)} />
+        {props.outlined && (
+          <TextField id="outlined-basic" label={props.label} variant="outlined" onChange={(event) => props.setOutlinedValue(event.target.value)} />
+        )}
+        {props.filled && (
+          <TextField id="filled-basic" label={props.label} variant="filled" onChange={(event) => props.setFilledValue(event.target.value)} />
+        )}
+        {props.standard && (
+          <TextField id="standard-basic" label={props.label} variant="standard" onChange={(event) => props.setStandardValue(event.target.value)} />
+        )}
       </Box>
     </div>
 

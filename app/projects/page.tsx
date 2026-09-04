@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://grpeteros-portfolio-be.onrender.com/projects')
+    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}:${process.env.NEXT_PUBLIC_LOCAL_PORT}/projects`)
       .then((res) => res.json())
       .then((data) => {
         let sortedData = data.projects.sort((a: any, b: any) => b.id - a.id);
