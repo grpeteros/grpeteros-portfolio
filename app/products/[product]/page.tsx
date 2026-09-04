@@ -14,7 +14,7 @@ export default function Page({params,}: {params: Promise<{product: string}>}) {
 
 
   useEffect(() => {
-    fetch(`http://192.168.254.104:3001/products/${product}`)
+    fetch(`https://rofwfqjxkshmlbwlqjku.supabase.co:3001/products/${product}`)
       .then((res) => res.json())
       .then((data) => {
         let sortedData = {...data.product[0]};
