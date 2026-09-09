@@ -61,6 +61,7 @@ export default function Home() {
             outlined={true}
             filled={true}
             standard={true}
+            label="Text Input"
             setOutlinedValue={setOutlinedValue}
             setFilledValue={setFilledValue}
             setStandardValue={setStandardValue}
