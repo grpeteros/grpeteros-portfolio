@@ -6,6 +6,7 @@ const nextConfig = {
   images: { unoptimized: true },
   allowedDevOrigins: ['10.206.144.63',
     '192.168.254.104',
+    '192.168.254.105',
   ]
 };
 

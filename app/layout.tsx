@@ -80,9 +80,10 @@ export default function RootLayout({
           {/* No prefetching */}
           <a href="/contact">Contact</a>
 
-          <Link href="/products">Products</Link>
+          {process.env.NODE_ENV === 'development' && <Link href="/products">Products</Link>}
           <Link href="/projects">Projects</Link>
-          <ShoppingCartIcon className="cursor-pointer" onClick={() => { window.location.href = '/cart' }} style={{marginLeft:'auto'}} />
+          
+          {process.env.NODE_ENV === 'development' && <ShoppingCartIcon className="cursor-pointer" onClick={() => { window.location.href = '/cart' }} style={{marginLeft:'auto'}} />}
 
 
         </nav>

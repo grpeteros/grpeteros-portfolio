@@ -19,7 +19,7 @@ export default function ProjectsPage() {
   }, [])
 
   if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
+  if (!data) return <p>No projects data</p>
   return (
     <div
       className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black"
