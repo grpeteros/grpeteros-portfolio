@@ -30,9 +30,9 @@ export default function BasicTable() {
     fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}${(process.env.NEXT_PUBLIC_LOCAL_PORT ? `:${process.env.NEXT_PUBLIC_LOCAL_PORT}` : '')}/products/`)
       .then((res) => res.json())
       .then((data) => {
-        // let sortedData = { };
+        let sortedData =  data.products.sort((a: any, b: any) => a.product_name.localeCompare(b.product_name));
         console.log(data)
-        setData(data?.products)
+        setData(sortedData)
       })
   }, [])
 

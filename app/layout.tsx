@@ -87,7 +87,10 @@ export default function RootLayout({
 
 
         </nav>
-        {children}
+        <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-black">
+          {children}
+        </div>
+        
 
         <div>
           <footer className="flex flex-row gap-4 p-4 text-sm text-zinc-950 dark:text-zinc-50">
