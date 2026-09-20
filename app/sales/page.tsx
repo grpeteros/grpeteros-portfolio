@@ -1,6 +1,5 @@
 'use client';
 import { Typography } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react'
 
@@ -18,10 +17,28 @@ export default function SalesPage() {
 
         const total = sortedData.reduce((sum: number, sale: any) => sum + sale.total_price, 0);
         setTotalPrice(total);
-        console.log(total)
         setLoading(false)
       })
   }, [])
+
+
+  const printToExcel = () => {
+    fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}:${process.env.NEXT_PUBLIC_LOCAL_PORT}/sales/print`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `sales_${new Date().toISOString().slice(0, 10)}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      })
+  }
 
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No sales data</p>
@@ -42,6 +59,15 @@ export default function SalesPage() {
             Total Sales:
             PHP{totalPrice.toFixed(2)}
           </Typography>
+          <Typography variant="h6" component="h6" gutterBottom className="text-gray-600 dark:text-gray-400 justify-center">
+            <button onClick={printToExcel} 
+            aria-label="Print to Excel"
+            className="cursor-pointer hover:underline flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]">
+              Excel
+            </button>
+          </Typography>
+        </div>
+        <div className="flex flex-col gap-2">
 
 
           {data?.map((transaction: any, index: number) => (
