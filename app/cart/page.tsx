@@ -20,7 +20,7 @@ export default function CartPage() {
     const cartData = JSON.parse(cart || '[]');
     for (let i = 0; i < cartData.length; i++) {
       const product = cartData[i];
-      console.log(product?.product_price);
+      // console.log(product?.product_price);
       total += Number(product?.product_price) * Number(product?.product_quantity);
     }
 
