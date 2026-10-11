@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col dark">
         {/* Prefetched when the link is hovered or enters the viewport */}
         <nav className="flex gap-4 p-4 ">
           <Link href="/">Home</Link>
