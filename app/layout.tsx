@@ -7,6 +7,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from 'next/link'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddIcon from '@mui/icons-material/Add';
+import { permanentRedirect, redirect } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +25,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  useEffect(() => {
+    const pathName = window.location.pathname;
+    setPath(pathName);
+  }, [])
   const [isOpen, setIsOpen] = useState(false);
+  const [path, setPath] = useState('')
+
+
   return (
     <html
       lang="en"
@@ -32,7 +40,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col dark">
         {/* Prefetched when the link is hovered or enters the viewport */}
-        <nav className="flex gap-4 p-4 ">
+        <nav className="flex gap-4 p-4 nav-bar">
           <Link href="/">Home</Link>
           {/* <Link href="/accordion">Accordion</Link>
           <Link href="/dropdown/">Dropdown</Link>
@@ -80,9 +88,16 @@ export default function RootLayout({
           {/* No prefetching */}
           <a href="/contact">Contact</a>
           <Link href="/projects">Projects</Link>
-          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <Link href="/products">Products</Link>}
-          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <Link href="/sales">Sales</Link>}
-          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <ShoppingCartIcon className="cursor-pointer" onClick={() => { window.location.href = '/cart' }} style={{ marginLeft: 'auto' }} />}
+          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES === 'true' && (
+            <Link href="/products" onClick={() => {
+              redirect('/products')
+            }}>Products</Link>
+          )}
+          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES === 'true' && <Link href="/sales">Sales</Link>}
+          <div style={{ marginLeft: 'auto' }}>
+            {process.env.NEXT_PUBLIC_SHOW_ADD && (path === '/products' || path === '/products/add') && <AddIcon onClick={() => { redirect('/products/add') }} className={`mr-5 cursor-pointer`} style={{ width: 35, height: 35 }} />}
+            {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <ShoppingCartIcon className="cursor-pointer shopping-cart-icon" onClick={() => { window.location.href = '/cart' }}  style={{ width: 35, height: 35 }} />}
+          </div>
 
 
         </nav>

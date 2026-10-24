@@ -49,8 +49,8 @@
 }
 
 .nav-links {
-    position: fixed;
-  }
+  position: fixed;
+}
 
 @media screen and (max-width: 1279px) {
   .nav-links {
@@ -64,6 +64,36 @@
   }
 }
 
+div.MuiBox-root {
+  padding: 5px;
+}
+
+.MuiButtonBase-root.MuiButton-root {
+  width: 20%;
+}
+
+.date-range-label {
+  margin-right: 1rem !important;
+}
+
+.MuiMenu-list {
+  z-index: 10;
+}
+
+.MuiTextField-root {
+  width: 99%;
+
+  @media screen and (max-width: 1279px) {
+    width: 97%;
+  }
+}
+
+.nav-bar{
+  flex-direction: row !important;
+  @media screen and (max-width: 200px) {
+    flex-direction: column !important;
+  }
+}
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -137,9 +167,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }

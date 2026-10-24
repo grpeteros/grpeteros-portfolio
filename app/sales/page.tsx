@@ -129,9 +129,9 @@ export default function SalesPage() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"
       >
         <div>
-          <div className='flex flex-row items-center'>
-            <Typography variant="h4" component="h4">
-              Date Range:
+          <div className='flex flex-col lg:flex-row items-center content-center'>
+            <Typography variant="h4" component="h4" className='ml-12 pb-8 lg:pb-0 date-range-label'>
+              Date Range {`${(window.innerWidth < 1024) ? `` : '|'}`}
             </Typography>
             <Popover>
               <PopoverTrigger
@@ -149,30 +149,39 @@ export default function SalesPage() {
               <PopoverContent className="w-auto p-0">
                 <Calendar required mode="single" selected={startDate} onSelect={setStartDate} />
               </PopoverContent>
-            </Popover> ~ <div><Popover>
-              <PopoverTrigger
-                render={
-                  <Button
-                    variant="outline"
-                    data-empty={!endDate}
-                    className="justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
-                  />
-                }
-              >
-                {/* <CalendarIcon /> */}
-                {endDate ? format(endDate, "PPP") : <span>Pick a date</span>}
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0">
-                <Calendar required mode="single" selected={endDate} onSelect={setEndDate} />
-              </PopoverContent>
             </Popover>
-            </div></div>
-          <Typography variant="h3" component="h3" gutterBottom>
-            {`${startDate.toLocaleDateString()} ~ ${endDate.toLocaleDateString()}`}
-          </Typography>
+            <h3 className={``} style={{ fontSize: '30px' }}>{`${window.outerWidth >= 1024 ? `-` : "|"}`}</h3>
+            <div>
+              <Popover>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant="outline"
+                      data-empty={!endDate}
+                      className="justify-start text-left font-normal data-[empty=true]:text-muted-foreground"
+                    />
+                  }
+                >
+                  {/* <CalendarIcon /> */}
+                  {endDate ? format(endDate, "PPP") : <span>Pick a date</span>}
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar required mode="single" selected={endDate} onSelect={setEndDate} />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
+          <div className={`flex flex-col items-center lg:flex-row lg:items-baseline`}>
+            <Typography variant="h3" component="h3" gutterBottom>
+              {`${startDate.toLocaleDateString()}`}
+            </Typography>
+            <h3 className={``} style={{ fontSize: '65px' }}>{`${window.outerWidth >= 1024 ? `-` : "|"}`}</h3>
+            <Typography variant="h3" component="h3" gutterBottom>
+              {`${endDate.toLocaleDateString()}`}
+            </Typography>
+          </div>
           <Typography variant="h4" component="h4" gutterBottom className="text-gray-600 dark:text-gray-400 justify-center">
-            Total Sales:
-            PHP{totalPrice.toFixed(2)}
+            Total Sales: {`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format(totalPrice)}`}
           </Typography>
           <Typography variant="h6" component="h6" gutterBottom className="text-gray-600 dark:text-gray-400 justify-center">
             <button onClick={printToExcel}
@@ -210,7 +219,11 @@ export default function SalesPage() {
               {transaction.products.map((product: any, productIndex: number) => (
                 <div key={productIndex}>
                   <Typography variant="h6" component="h6" gutterBottom className="text-gray-600 dark:text-gray-400 justify-center">
-                    {`(${new Date(transaction.created_at).toLocaleDateString()}) ${product.product_name} - PHP${product.product_price} x ${product.product_quantity} = PHP${(Number(product.product_price) * Number(product.product_quantity)).toFixed(2)}`}
+                    {`(${new Date(transaction.created_at).toLocaleDateString()}) 
+                    ${product.product_name} - 
+                    ${`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format(Number(product.product_price))}`} x 
+                    ${Number(product.product_quantity).toFixed(2)} = 
+                    ${`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format(Number(product.product_price) * Number(product.product_quantity))}`}`}
                   </Typography>
                 </div>
               ))}

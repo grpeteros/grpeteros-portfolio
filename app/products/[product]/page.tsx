@@ -1,11 +1,10 @@
 
 'use client'
 import Link from 'next/link';
-import Image from 'next/image';
 import { use, useEffect, useState } from 'react';
-import TextBoxPage from '@/app/text-input/page';
 import TextBoxCustom from '@/app/src/TextBoxCustom';
 import { Typography } from '@mui/material';
+import { showToast } from "nextjs-toast-notify";
 
 
 
@@ -30,7 +29,15 @@ export default function Page({ params, }: { params: Promise<{ product: string }>
       return
     }
     window.localStorage.setItem('cart', JSON.stringify([...JSON.parse(window.localStorage.getItem('cart') || '[]'), { ...productData, product_quantity: data?.product_quantity }]));
-    alert('Added to cart')
+    // alert('Added to cart')
+
+    showToast.success(`${productData.product_quantity} ${productData.product_name} added to cart`, {
+        duration: 4000, // 4 seconds
+        position: "top-right",
+        transition: "bounceIn",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+        progress: true
+      });
   }
 
   return <div className="flex flex-col items-center justify-center gap-4 p-4">
