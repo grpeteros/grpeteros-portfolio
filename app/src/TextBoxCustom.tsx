@@ -7,21 +7,23 @@ export default function BasicTextFields(props: any) {
 
 
   return (
-    <div>
+    <div className={`w-99/100`}>
       <Typography component="h2">
-        {props.label}
+        {props.noLabel !== true ? props.label : ''}
       </Typography>
       <Box
         component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+        sx={{ '& > :not(style)': { m: 1 } }}
         noValidate
         autoComplete="off"
-        className="bg-white border border-radius-xs"
+        className={`bg-white border border-radius-xs ${props.className} w-99/100`}
 
          style={{ borderRadius: '5px' }}
       >
         {props.outlined && (
-          <TextField id="outlined-basic" label={props.label} variant="outlined" onChange={(event) => props.setOutlinedValue(event.target.value)} />
+          <TextField 
+          className={`${props.className} w-99/100`}
+          id="outlined-basic" label={props.label} variant="outlined" onChange={(event) => props.setOutlinedValue(event.target.value)} />
         )}
         {props.filled && (
           <TextField id="filled-basic" label={props.label} variant="filled" onChange={(event) => props.setFilledValue(event.target.value)} />
