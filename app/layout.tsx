@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col dark">
         {/* Prefetched when the link is hovered or enters the viewport */}
         <nav className="flex gap-4 p-4 nav-bar">
-          <Link href="/">Home</Link>
+          {!process.env.NEXT_PUBLIC_HOME_ROUTES_ONLY != !process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES && <Link href="/">Home</Link>}
           {/* <Link href="/accordion">Accordion</Link>
           <Link href="/dropdown/">Dropdown</Link>
           <div className="flex flex-row" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
@@ -86,17 +86,23 @@ export default function RootLayout({
             }
           </div> */}
           {/* No prefetching */}
-          <a href="/contact">Contact</a>
-          <Link href="/projects">Projects</Link>
+          {!process.env.NEXT_PUBLIC_HOME_ROUTES_ONLY != !process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES && <Link href="/contact" onClick={() => {
+              redirect('/contact')
+            }}>Contact</Link>}
+          {!process.env.NEXT_PUBLIC_HOME_ROUTES_ONLY != !process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES && <Link href="/projects" onClick={() => {
+              redirect('/projects')
+            }}>Projects</Link>}
           {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES === 'true' && (
             <Link href="/products" onClick={() => {
               redirect('/products')
             }}>Products</Link>
           )}
-          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES === 'true' && <Link href="/sales">Sales</Link>}
+          {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES === 'true' && <Link href="/sales" onClick={() => {
+              redirect('/sales')
+            }}>Sales</Link>}
           <div style={{ marginLeft: 'auto' }}>
             {process.env.NEXT_PUBLIC_SHOW_ADD && (path === '/products' || path === '/products/add') && <AddIcon onClick={() => { redirect('/products/add') }} className={`mr-5 cursor-pointer`} style={{ width: 35, height: 35 }} />}
-            {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <ShoppingCartIcon className="cursor-pointer shopping-cart-icon" onClick={() => { window.location.href = '/cart' }}  style={{ width: 35, height: 35 }} />}
+            {process.env.NEXT_PUBLIC_SHOW_ALL_ROUTES == 'true' && <ShoppingCartIcon className="cursor-pointer shopping-cart-icon" onClick={() => { window.location.href = '/cart' }} style={{ width: 35, height: 35 }} />}
           </div>
 
 

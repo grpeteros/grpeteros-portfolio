@@ -32,20 +32,29 @@ export default function Page({ params, }: { params: Promise<{ product: string }>
     // alert('Added to cart')
 
     showToast.success(`${productData.product_quantity} ${productData.product_name} added to cart`, {
-        duration: 4000, // 4 seconds
-        position: "top-right",
-        transition: "bounceIn",
-        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
-        progress: true
-      });
+      duration: 4000, // 4 seconds
+      position: "top-right",
+      transition: "bounceIn",
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+      progress: true
+    });
   }
 
   return <div className="flex flex-col items-center justify-center gap-4 p-4">
-    Product |  {data?.product_name}: PHP {data?.product_price} / kg
+    <div className='flex flex-row'>
+
+      Product | &nbsp; <span className='font-bold'>{String(data?.product_name || '').toLocaleUpperCase()}</span>: {`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format(data?.product_price || 0)}`} / kg
+
+    </div>
     <TextBoxCustom filled={true} setFilledValue={(value: number) => setData({ ...data, product_quantity: Number(value) })} label="Weight (kg)" />
-    <Typography component="h2" className="semibold text-lg text-black dark:text-zinc-600">
-      {`Amount: PHP ${data?.product_price * data?.product_quantity || 0}`}
-    </Typography>
+    <div className='flex flex-row'>
+      <Typography component="h2" className="semibold text-lg text-black dark:text-zinc-600">
+        {`Amount:`}
+      </Typography>
+      <Typography component='h2' className='font-bold text-lg text-black dark:text-zinc-600 '>
+        {`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format((Number(data?.product_price) * Number(data?.product_quantity)) || 0)}`}
+      </Typography>
+    </div>
     <Link href='' onClick={() => { addToCart(data) }} className="hover:underline flex py-5 h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
       style={{ marginTop: '5px' }}
     >
