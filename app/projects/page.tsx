@@ -26,7 +26,7 @@ export default function ProjectsPage() {
     >
 
       {data.map((project: any, index: number) => (
-        <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start" key={index}>
+        <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-4 px-16 bg-white dark:bg-black sm:items-start" key={index}>
           <div>
             <Typography variant="h2" component="h1" gutterBottom>
               {project.project_title}

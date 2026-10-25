@@ -40,7 +40,7 @@ export default function BasicTable() {
     const dataArr = data ?? [];
     if (filled.length > 0) {
       let filterData = dataArr.filter((elem: any) => {
-        return String(elem.product_name).includes(filled)
+        return String(elem.product_name.toLowerCase()).includes(filled.toLowerCase())
       })
       let sortedDataArr = filterData?.sort((a: any, b: any) => a.product_name.localeCompare(b.product_name));
       setSorted(sortedDataArr)
@@ -60,13 +60,14 @@ export default function BasicTable() {
     <div className={`flex flex-col`}>
       <div className='mb-8'>
         <TextBoxCustom
+          noLabel
           filled={true}
-          label=""
+          label="Product Search"
           setFilledValue={setFilledValue}
         />
       </div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 320 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Product</TableCell>
@@ -78,10 +79,16 @@ export default function BasicTable() {
                 key={row.product_name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  <Link href={`/products/${row.product_name}`} className="hover:underline">
-                    {row.product_name}
-
+                <TableCell component="th" scope="row" className='hover:bg-blue-100 hover:underline'>
+                  <Link href={`/products/${row.product_name}`} className="product-table ">
+                    <div className='flex flex-row justify-between align-between product-table-line'>
+                      <span className='pl-5'>
+                        {row.product_name}
+                      </span>
+                      <span className='pr-5'>
+                        {`${new Intl.NumberFormat("en-PH", { style: "currency", currency: "php" }).format(row.product_price || 0)}`}
+                      </span>
+                    </div>
                   </Link>
                 </TableCell>
                 {/* <TableCell align="right">{row.calories}</TableCell>

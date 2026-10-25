@@ -88,12 +88,45 @@ div.MuiBox-root {
   }
 }
 
-.nav-bar{
+.nav-bar {
   flex-direction: row !important;
-  @media screen and (max-width: 200px) {
-    flex-direction: column !important;
+  flex-wrap: nowrap;
+
+  @media screen and (max-width: 640px) {
+    flex-wrap: wrap;
+    /* flex-direction: column !important; */
   }
 }
+
+.MuiTableContainer-root {
+  overflow-y: hidden;
+}
+
+.MuiTableCell-root.MuiTableCell-body {
+  padding: 0px;
+  line-height: .1;
+
+
+
+  .product-table {
+    padding: 2px;
+    line-height: .1;
+
+    .product-table-line {
+      line-height: 5;
+    }
+  }
+}
+
+.MuiTableCell-body:hover {
+  cursor: pointer;
+}
+
+
+
+
+
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
